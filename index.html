@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="tota — prosta biblioteka Python do tworzenia i uczenia sieci neuronowych.">
+  <title>tota — proste sieci neuronowe w Pythonie</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="tota — strona główna"><span class="brand-mark">t</span><span>tota</span></a>
+    <nav aria-label="Główna nawigacja">
+      <a href="#about">O bibliotece</a>
+      <a href="#quickstart">Start</a>
+      <a href="#api">API</a>
+      <a href="#activations">Aktywacje</a>
+      <a class="nav-github" href="https://github.com/totatomasz13-web/tota-website" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="pulse"></span> Biblioteka Python · v0.4.0</p>
+        <h1>Mała biblioteka.<br><em>Wielkie pomysły.</em></h1>
+        <p class="hero-lead">tota to proste, edukacyjne narzędzie do budowania i uczenia sieci neuronowych — stworzone przez Tomasza.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#quickstart">Zacznij w 60 sekund <span>→</span></a>
+          <a class="button button-ghost" href="https://github.com/totatomasz13-web/tota" target="_blank" rel="noreferrer">Zobacz kod ↗</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Schemat sieci neuronowej" role="img">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="network-graphic">
+          <div class="node-col"><i></i><i></i><i></i></div>
+          <div class="connections"><b></b><b></b><b></b><b></b><b></b><b></b></div>
+          <div class="node-col middle"><i></i><i></i><i></i><i></i></div>
+          <div class="connections second"><b></b><b></b><b></b><b></b><b></b></div>
+          <div class="node-col"><i></i><i></i></div>
+        </div>
+        <span class="art-label label-input">wejście</span><span class="art-label label-output">wynik</span>
+      </div>
+    </section>
+
+    <section id="about" class="section-shell section-block">
+      <div class="section-heading"><p class="eyebrow">01 — idea</p><h2>Neuronowe podstawy,<br><em>bez czarnej skrzynki.</em></h2></div>
+      <div class="about-grid">
+        <p class="large-copy">tota pomaga zobaczyć, jak dane przechodzą przez neurony, warstwy i funkcje aktywacji. Kod jest niewielki, czytelny i dobry do nauki podstaw uczenia maszynowego.</p>
+        <div class="fact-list"><div><strong>Python 3.9+</strong><span>prosty interfejs</span></div><div><strong>PyTorch ≥ 2.0</strong><span>obliczenia tensorowe</span></div><div><strong>CPU</strong><span>lekki start bez GPU</span></div></div>
+      </div>
+    </section>
+
+    <section id="quickstart" class="section-shell section-block tinted">
+      <div class="section-heading inline-heading"><div><p class="eyebrow">02 — quickstart</p><h2>Pierwsza sieć<br><em>w kilku linijkach.</em></h2></div><span class="step-count">01 / 03</span></div>
+      <div class="code-card"><div class="code-top"><span class="dots"><i></i><i></i><i></i></span><span>example.py</span><button class="copy-button" data-copy="code-example">Kopiuj</button></div><pre id="code-example"><code><span class="kw">from</span> tota <span class="kw">import</span> Layer, Network
+
+training_data = [
+    ([<span class="num">1</span>], <span class="num">0</span>), ([<span class="num">2</span>], <span class="num">0</span>),
+    ([<span class="num">6</span>], <span class="num">1</span>), ([<span class="num">8</span>], <span class="num">1</span>),
+]
+
+network = Network([
+    Layer(<span class="num">5</span>, <span class="num">1</span>),
+    Layer(<span class="num">1</span>, <span class="num">5</span>),
+])
+
+<span class="fn">print</span>(network.learn(training_data, <span class="num">0.01</span>, <span class="num">5000</span>))
+<span class="fn">print</span>(network.predict([<span class="num">7</span>]))  <span class="comment"># 1</span></code></pre></div>
+      <div class="quick-notes"><div><span>01</span><p><b>Zainstaluj</b><br><code>python -m pip install .</code></p></div><div><span>02</span><p><b>Zbuduj</b><br>Połącz warstwy w <code>Network</code>.</p></div><div><span>03</span><p><b>Ucz</b><br>Wywołaj <code>network.learn(...)</code>.</p></div></div>
+    </section>
+
+    <section id="api" class="section-shell section-block">
+      <div class="section-heading"><p class="eyebrow">03 — API</p><h2>Trzy klocki<br><em>do budowania sieci.</em></h2></div>
+      <div class="api-grid"><article class="api-card"><span class="api-number">01</span><h3>Neuron</h3><p>Pojedynczy neuron z wagami, biasem i wybraną funkcją aktywacji.</p><code>Neuron(weight, bias, activation)</code><ul><li><b>forward(x)</b> — oblicza wynik</li><li><b>learn(...)</b> — uczy neuron</li><li><b>activation_derivative()</b> — pochodna</li></ul></article><article class="api-card featured"><span class="api-number">02</span><h3>Layer</h3><p>Warstwa wielu neuronów, która przyjmuje wektor wejściowy.</p><code>Layer(ilość_neuronów, ilość_wejść)</code><ul><li><b>forward(x)</b> — przejście w przód</li><li>obsługuje aktywacje</li><li>tworzy losowe wagi</li></ul></article><article class="api-card"><span class="api-number">03</span><h3>Network</h3><p>Łączy warstwy i udostępnia uczenie oraz predykcję.</p><code>Network([layer, ...])</code><ul><li><b>learn(...)</b> — SGD + backprop</li><li><b>predict(x)</b> — klasyfikacja 0/1</li><li><b>predict_ReLU(x)</b> — wynik ReLU</li></ul></article></div>
+    </section>
+
+    <section id="activations" class="section-shell section-block tinted">
+      <div class="section-heading inline-heading"><div><p class="eyebrow">04 — aktywacje</p><h2>Wybierz charakter<br><em>swojego neuronu.</em></h2></div><p class="hint">Kliknij funkcję</p></div>
+      <div class="activation-layout"><div class="activation-tabs" role="tablist" aria-label="Funkcje aktywacji"><button class="active" data-activation="sigmoid">sigmoid</button><button data-activation="relu">relu</button><button data-activation="tanh">tanh</button><button data-activation="linear">linear</button><button data-activation="leaky_relu">leaky_relu</button><button data-activation="step">step</button></div><div class="activation-demo"><div class="demo-copy"><span id="activation-name">sigmoid</span><p id="activation-description">Wygładza wynik do zakresu od 0 do 1. Dobry wybór dla klasyfikacji.</p><div class="mini-values"><span>wejście <b id="demo-input">0.0</b></span><span>wynik <b id="demo-output">0.5</b></span></div></div><div class="graph"><div class="axis-y"></div><div class="axis-x"></div><svg viewBox="0 0 300 160" preserveAspectRatio="none" aria-hidden="true"><path id="activation-path" d="M0 128 C42 128 84 126 120 113 C160 96 184 64 210 49 C242 32 270 31 300 31"></path></svg></div></div></div>
+    </section>
+
+    <section class="section-shell section-block final-cta"><p class="eyebrow">05 — dalej</p><h2>Ucz się.<br><em>Eksperymentuj.</em></h2><p>Zbuduj coś własnego z tota i zobacz, jak teoria zamienia się w działający kod.</p><div class="hero-actions"><a class="button button-primary" href="#quickstart">Przejdź do quickstartu <span>→</span></a><a class="button button-ghost" href="https://github.com/totatomasz13-web/tota-website" target="_blank" rel="noreferrer">Dokumentacja na GitHubie ↗</a></div></section>
+  </main>
+  <footer class="site-footer section-shell"><span>tota <small>v0.4.0</small></span><span>Stworzone przez Tomasza · 2026</span><a href="#top">Na górę ↑</a></footer>
+  <script src="script.js"></script>
+</body>
+</html>
