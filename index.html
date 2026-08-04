@@ -6,11 +6,15 @@
   <meta name="description" content="tota — prosta biblioteka Python do tworzenia i uczenia sieci neuronowych.">
   <title>tota — proste sieci neuronowe w Pythonie</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="modern.css">
 </head>
 <body>
+  <a class="skip-link" href="#top">Przejdź do treści</a>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="tota — strona główna"><span class="brand-mark">t</span><span>tota</span></a>
-    <nav aria-label="Główna nawigacja">
+    <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Otwórz menu"><span></span><span></span></button>
+    <nav id="main-nav" aria-label="Główna nawigacja">
       <a href="#about">O bibliotece</a>
       <a href="#quickstart">Start</a>
       <a href="#api">API</a>
@@ -29,6 +33,7 @@
           <a class="button button-primary" href="#quickstart">Zacznij w 60 sekund <span>→</span></a>
           <a class="button button-ghost" href="#api">Zobacz API ↓</a>
         </div>
+        <div class="hero-meta" aria-label="Najważniejsze informacje"><span><b>0.4.0</b> aktualna wersja</span><span><b>PyTorch</b> silnik obliczeń</span><span><b>MIT</b> otwarte źródło</span></div>
       </div>
       <div class="hero-art" aria-label="Schemat sieci neuronowej" role="img">
         <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
@@ -77,7 +82,7 @@ network = Network([
 
     <section id="activations" class="section-shell section-block tinted">
       <div class="section-heading inline-heading"><div><p class="eyebrow">04 — aktywacje</p><h2>Wybierz charakter<br><em>swojego neuronu.</em></h2></div><p class="hint">Kliknij funkcję</p></div>
-      <div class="activation-layout"><div class="activation-tabs" role="tablist" aria-label="Funkcje aktywacji"><button class="active" data-activation="sigmoid">sigmoid</button><button data-activation="relu">relu</button><button data-activation="tanh">tanh</button><button data-activation="linear">linear</button><button data-activation="leaky_relu">leaky_relu</button><button data-activation="step">step</button></div><div class="activation-demo"><div class="demo-copy"><span id="activation-name">sigmoid</span><p id="activation-description">Wygładza wynik do zakresu od 0 do 1. Dobry wybór dla klasyfikacji.</p><div class="mini-values"><span>wejście <b id="demo-input">0.0</b></span><span>wynik <b id="demo-output">0.5</b></span></div></div><div class="graph"><div class="axis-y"></div><div class="axis-x"></div><svg viewBox="0 0 300 160" preserveAspectRatio="none" aria-hidden="true"><path id="activation-path" d="M0 128 C42 128 84 126 120 113 C160 96 184 64 210 49 C242 32 270 31 300 31"></path></svg></div></div></div>
+      <div class="activation-layout"><div class="activation-tabs" role="tablist" aria-label="Funkcje aktywacji"><button role="tab" aria-selected="true" class="active" data-activation="sigmoid">sigmoid</button><button role="tab" aria-selected="false" data-activation="relu">relu</button><button role="tab" aria-selected="false" data-activation="tanh">tanh</button><button role="tab" aria-selected="false" data-activation="linear">linear</button><button role="tab" aria-selected="false" data-activation="leaky_relu">leaky_relu</button><button role="tab" aria-selected="false" data-activation="step">step</button></div><div class="activation-demo"><div class="demo-copy"><span id="activation-name">sigmoid</span><p id="activation-description">Wygładza wynik do zakresu od 0 do 1. Dobry wybór dla klasyfikacji.</p><div class="mini-values"><span>wejście <b id="demo-input">0.0</b></span><span>wynik <b id="demo-output">0.5</b></span></div></div><div class="graph"><div class="axis-y"></div><div class="axis-x"></div><svg viewBox="0 0 300 160" preserveAspectRatio="none" aria-hidden="true"><path id="activation-path" d="M0 128 C42 128 84 126 120 113 C160 96 184 64 210 49 C242 32 270 31 300 31"></path></svg></div></div></div>
     </section>
 
     <section class="section-shell section-block final-cta"><p class="eyebrow">05 — dalej</p><h2>Ucz się.<br><em>Eksperymentuj.</em></h2><p>Zbuduj coś własnego z tota i zobacz, jak teoria zamienia się w działający kod.</p><div class="hero-actions"><a class="button button-primary" href="#quickstart">Przejdź do quickstartu <span>→</span></a><a class="button button-ghost" href="https://github.com/totatomasz13-web/TotaAI" target="_blank" rel="noreferrer">Dokumentacja na GitHubie ↗</a></div></section>
