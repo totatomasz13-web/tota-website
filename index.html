@@ -7,6 +7,7 @@
   <title>tota — proste sieci neuronowe w Pythonie</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="modern.css">
+  <link rel="stylesheet" href="fixes.css">
 </head>
 <body>
   <a class="skip-link" href="#top">Przejdź do treści</a>
@@ -17,6 +18,7 @@
     <nav id="main-nav" aria-label="Główna nawigacja">
       <a href="#about">O bibliotece</a>
       <a href="#quickstart">Start</a>
+      <a href="#guide">Instrukcja</a>
       <a href="#api">API</a>
       <a href="#activations">Aktywacje</a>
       <a class="nav-github" href="https://github.com/totatomasz13-web/tota" target="_blank" rel="noreferrer">GitHub ↗</a>
@@ -75,17 +77,38 @@ network = Network([
       <div class="quick-notes"><div><span>01</span><p><b>Zainstaluj</b><br><code>python -m pip install .</code></p></div><div><span>02</span><p><b>Zbuduj</b><br>Połącz warstwy w <code>Network</code>.</p></div><div><span>03</span><p><b>Ucz</b><br>Wywołaj <code>network.learn(...)</code>.</p></div></div>
     </section>
 
+    <section id="guide" class="section-shell section-block guide-section">
+      <div class="section-heading"><p class="eyebrow">03 — instrukcja</p><h2>Od pustego pliku<br><em>do pierwszej predykcji.</em></h2></div>
+      <div class="guide-grid">
+        <details open><summary><span>01</span><b>Przygotuj dane</b><i>+</i></summary><p>Każdy przykład to para: wektor wejściowy i oczekiwany cel. Dla klasyfikacji używaj zwykle celu <code>0</code> albo <code>1</code>.</p><pre><code>dane = [
+    ([1, 2], 0),
+    ([6, 7], 1),
+]</code></pre></details>
+        <details><summary><span>02</span><b>Zaprojektuj warstwy</b><i>+</i></summary><p>Drugi argument <code>Layer</code> musi odpowiadać liczbie wartości z poprzedniej warstwy.</p><pre><code>Network([
+    Layer(8, 2),
+    Layer(1, 8),
+])</code></pre></details>
+        <details><summary><span>03</span><b>Uruchom uczenie</b><i>+</i></summary><p>Małe <code>learning_rate</code> uczy wolniej, ale stabilniej. Zacznij od <code>0.01</code>.</p><pre><code>network.learn(
+    dane, 0.01, 5000,
+    show_progress=False,
+)</code></pre></details>
+        <details><summary><span>04</span><b>Sprawdź wynik</b><i>+</i></summary><p><code>predict</code> zwraca klasę 0/1. Zawsze sprawdź kilka przykładów po treningu.</p><pre><code>for x, cel in dane:
+    print(cel, network.predict(x))</code></pre></details>
+      </div>
+    </section>
+
     <section id="api" class="section-shell section-block">
-      <div class="section-heading"><p class="eyebrow">03 — API</p><h2>Trzy klocki<br><em>do budowania sieci.</em></h2></div>
+      <div class="section-heading"><p class="eyebrow">04 — API</p><h2>Trzy klocki<br><em>do budowania sieci.</em></h2></div>
       <div class="api-grid"><article class="api-card"><span class="api-number">01</span><h3>Neuron</h3><p>Pojedynczy neuron z wagami, biasem i wybraną funkcją aktywacji.</p><code>Neuron(weight, bias, activation)</code><ul><li><b>forward(x)</b> — oblicza wynik</li><li><b>learn(...)</b> — uczy neuron</li><li><b>activation_derivative()</b> — pochodna</li></ul></article><article class="api-card featured"><span class="api-number">02</span><h3>Layer</h3><p>Warstwa wielu neuronów, która przyjmuje wektor wejściowy.</p><code>Layer(ilość_neuronów, ilość_wejść)</code><ul><li><b>forward(x)</b> — przejście w przód</li><li>obsługuje aktywacje</li><li>tworzy losowe wagi</li></ul></article><article class="api-card"><span class="api-number">03</span><h3>Network</h3><p>Łączy warstwy i udostępnia uczenie oraz predykcję.</p><code>Network([layer, ...])</code><ul><li><b>learn(...)</b> — SGD + backprop</li><li><b>predict(x)</b> — klasyfikacja 0/1</li><li><b>predict_ReLU(x)</b> — wynik ReLU</li></ul></article></div>
     </section>
 
     <section id="activations" class="section-shell section-block tinted">
-      <div class="section-heading inline-heading"><div><p class="eyebrow">04 — aktywacje</p><h2>Wybierz charakter<br><em>swojego neuronu.</em></h2></div><p class="hint">Kliknij funkcję</p></div>
-      <div class="activation-layout"><div class="activation-tabs" role="tablist" aria-label="Funkcje aktywacji"><button role="tab" aria-selected="true" class="active" data-activation="sigmoid">sigmoid</button><button role="tab" aria-selected="false" data-activation="relu">relu</button><button role="tab" aria-selected="false" data-activation="tanh">tanh</button><button role="tab" aria-selected="false" data-activation="linear">linear</button><button role="tab" aria-selected="false" data-activation="leaky_relu">leaky_relu</button><button role="tab" aria-selected="false" data-activation="step">step</button></div><div class="activation-demo"><div class="demo-copy"><span id="activation-name">sigmoid</span><p id="activation-description">Wygładza wynik do zakresu od 0 do 1. Dobry wybór dla klasyfikacji.</p><div class="mini-values"><span>wejście <b id="demo-input">0.0</b></span><span>wynik <b id="demo-output">0.5</b></span></div></div><div class="graph"><div class="axis-y"></div><div class="axis-x"></div><svg viewBox="0 0 300 160" preserveAspectRatio="none" aria-hidden="true"><path id="activation-path" d="M0 128 C42 128 84 126 120 113 C160 96 184 64 210 49 C242 32 270 31 300 31"></path></svg></div></div></div>
-    </section>
+      <div class="section-heading inline-heading"><div><p class="eyebrow">05 — aktywacje</p><h2>Porównaj funkcje<br><em>przed wyborem.</em></h2></div><p class="hint">Kliknij funkcję</p></div>
+      <div class="activation-layout"><div class="activation-tabs" role="tablist" aria-label="Funkcje aktywacji"><button role="tab" aria-selected="true" class="active" data-activation="sigmoid">sigmoid</button><button role="tab" aria-selected="false" data-activation="relu">relu</button><button role="tab" aria-selected="false" data-activation="tanh">tanh</button><button role="tab" aria-selected="false" data-activation="linear">linear</button><button role="tab" aria-selected="false" data-activation="leaky_relu">leaky_relu</button><button role="tab" aria-selected="false" data-activation="step">step</button></div><div class="activation-demo"><div class="demo-copy"><span id="activation-name">sigmoid</span><p id="activation-description">Wygładza wynik do zakresu od 0 do 1. Dobry wybór dla klasyfikacji.</p><div class="activation-specs"><span>zakres <b id="activation-range">0 → 1</b></span><span>zastosowanie <b id="activation-use">klasyfikacja</b></span></div><div class="mini-values"><span>wejście <b id="demo-input">0.0</b></span><span>wynik <b id="demo-output">0.5</b></span></div></div><div class="graph"><div class="axis-y"></div><div class="axis-x"></div><svg viewBox="0 0 300 160" preserveAspectRatio="none" aria-hidden="true"><path id="activation-path" d="M0 128 C42 128 84 126 120 113 C160 96 184 64 210 49 C242 32 270 31 300 31"></path></svg></div></div></div>
++      <div class="activation-table-wrap"><table class="activation-table"><caption>Porównanie funkcji aktywacji</caption><thead><tr><th>Funkcja</th><th>Zakres</th><th>Najlepsza do</th><th>Ważna cecha</th></tr></thead><tbody><tr><td><code>sigmoid</code></td><td>0 → 1</td><td>klasyfikacji binarnej</td><td>gładka</td></tr><tr><td><code>relu</code></td><td>0 → ∞</td><td>warstw ukrytych</td><td>prosta i szybka</td></tr><tr><td><code>tanh</code></td><td>-1 → 1</td><td>danych wokół zera</td><td>centruje wynik</td></tr><tr><td><code>linear</code></td><td>-∞ → ∞</td><td>regresji</td><td>nie zmienia wartości</td></tr><tr><td><code>leaky_relu</code></td><td>-∞ → ∞</td><td>warstw ukrytych</td><td>zachowuje gradient</td></tr><tr><td><code>step</code></td><td>0 lub 1</td><td>prostego progu</td><td>twarda granica</td></tr></tbody></table></div>
+     </section>
 
-    <section class="section-shell section-block final-cta"><p class="eyebrow">05 — dalej</p><h2>Ucz się.<br><em>Eksperymentuj.</em></h2><p>Zbuduj coś własnego z tota i zobacz, jak teoria zamienia się w działający kod.</p><div class="hero-actions"><a class="button button-primary" href="#quickstart">Przejdź do quickstartu <span>→</span></a><a class="button button-ghost" href="https://github.com/totatomasz13-web/tota" target="_blank" rel="noreferrer">Dokumentacja na GitHubie ↗</a></div></section>
+    <section class="section-shell section-block final-cta"><p class="eyebrow">06 — dalej</p><h2>Ucz się.<br><em>Eksperymentuj.</em></h2><p>Zbuduj coś własnego z tota i zobacz, jak teoria zamienia się w działający kod.</p><div class="hero-actions"><a class="button button-primary" href="#quickstart">Przejdź do quickstartu <span>→</span></a><a class="button button-ghost" href="https://github.com/totatomasz13-web/tota" target="_blank" rel="noreferrer">Dokumentacja na GitHubie ↗</a></div></section>
   </main>
   <footer class="site-footer section-shell"><span>tota <small>v0.4.0</small></span><span>Stworzone przez Tomasza · 2026</span><a href="#top">Na górę ↑</a></footer>
   <script src="script.js"></script>
