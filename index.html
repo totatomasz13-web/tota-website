@@ -8,12 +8,13 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="modern.css">
   <link rel="stylesheet" href="fixes.css">
+  <link rel="stylesheet" href="art-fixes.css">
 </head>
 <body>
   <a class="skip-link" href="#top">Przejdź do treści</a>
   <div class="scroll-progress" aria-hidden="true"><span></span></div>
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="tota — strona główna"><span class="brand-mark">t</span><span>tota</span></a>
+    <a class="brand" href="#top" aria-label="tota — strona główna"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8 8 L24 12 L10 24 Z"/><circle cx="8" cy="8" r="3"/><circle cx="24" cy="12" r="3"/><circle cx="10" cy="24" r="3"/></svg></span><span>tota</span></a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Otwórz menu"><span></span><span></span></button>
     <nav id="main-nav" aria-label="Główna nawigacja">
       <a href="#about">O bibliotece</a>
@@ -37,17 +38,7 @@
         </div>
         <div class="hero-meta" aria-label="Najważniejsze informacje"><span><b>0.4.0</b> aktualna wersja</span><span><b>PyTorch</b> silnik obliczeń</span><span><b>MIT</b> otwarte źródło</span></div>
       </div>
-      <div class="hero-art" aria-label="Schemat sieci neuronowej" role="img">
-        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-        <div class="network-graphic">
-          <div class="node-col"><i></i><i></i><i></i></div>
-          <div class="connections"><b></b><b></b><b></b><b></b><b></b><b></b></div>
-          <div class="node-col middle"><i></i><i></i><i></i><i></i></div>
-          <div class="connections second"><b></b><b></b><b></b><b></b><b></b></div>
-          <div class="node-col"><i></i><i></i></div>
-        </div>
-        <span class="art-label label-input">wejście</span><span class="art-label label-output">wynik</span>
-      </div>
+      <div class="hero-art" aria-label="Schemat sieci neuronowej" role="img"><svg class="hero-network-svg" viewBox="0 0 520 390" aria-hidden="true"><g class="network-lines"><path d="M92 110 L238 76 M92 110 L238 195 M92 110 L238 314 M92 195 L238 76 M92 195 L238 195 M92 195 L238 314 M92 280 L238 76 M92 280 L238 195 M92 280 L238 314 M282 76 L428 140 M282 76 L428 250 M282 195 L428 140 M282 195 L428 250 M282 314 L428 140 M282 314 L428 250"/></g><g class="network-nodes input-nodes"><circle cx="92" cy="110" r="13"/><circle cx="92" cy="195" r="13"/><circle cx="92" cy="280" r="13"/></g><g class="network-nodes hidden-nodes"><circle cx="260" cy="76" r="15"/><circle cx="260" cy="195" r="15"/><circle cx="260" cy="314" r="15"/></g><g class="network-nodes output-nodes"><circle cx="428" cy="140" r="16"/><circle cx="428" cy="250" r="16"/></g></svg><span class="art-label label-input">wejście</span><span class="art-label label-output">wynik</span></div>
     </section>
 
     <section id="about" class="section-shell section-block">
@@ -80,20 +71,20 @@ network = Network([
     <section id="guide" class="section-shell section-block guide-section">
       <div class="section-heading"><p class="eyebrow">03 — instrukcja</p><h2>Od pustego pliku<br><em>do pierwszej predykcji.</em></h2></div>
       <div class="guide-grid">
-        <details open><summary><span>01</span><b>Przygotuj dane</b><i>+</i></summary><p>Każdy przykład to para: wektor wejściowy i oczekiwany cel. Dla klasyfikacji używaj zwykle celu <code>0</code> albo <code>1</code>.</p><pre><code>dane = [
+        <div class="guide-card"><div class="guide-card-title"><span>01</span><b>Przygotuj dane</b><i>✓</i></div><p>Każdy przykład to para: wektor wejściowy i oczekiwany cel. Dla klasyfikacji używaj zwykle celu <code>0</code> albo <code>1</code>.</p><pre><code>dane = [
     ([1, 2], 0),
     ([6, 7], 1),
-]</code></pre></details>
-        <details><summary><span>02</span><b>Zaprojektuj warstwy</b><i>+</i></summary><p>Drugi argument <code>Layer</code> musi odpowiadać liczbie wartości z poprzedniej warstwy.</p><pre><code>Network([
+]</code></pre></div>
+        <div class="guide-card"><div class="guide-card-title"><span>02</span><b>Zaprojektuj warstwy</b><i>✓</i></div><p>Drugi argument <code>Layer</code> musi odpowiadać liczbie wartości z poprzedniej warstwy.</p><pre><code>Network([
     Layer(8, 2),
     Layer(1, 8),
-])</code></pre></details>
-        <details><summary><span>03</span><b>Uruchom uczenie</b><i>+</i></summary><p>Małe <code>learning_rate</code> uczy wolniej, ale stabilniej. Zacznij od <code>0.01</code>.</p><pre><code>network.learn(
+])</code></pre></div>
+        <div class="guide-card"><div class="guide-card-title"><span>03</span><b>Uruchom uczenie</b><i>✓</i></div><p>Małe <code>learning_rate</code> uczy wolniej, ale stabilniej. Zacznij od <code>0.01</code>.</p><pre><code>network.learn(
     dane, 0.01, 5000,
     show_progress=False,
-)</code></pre></details>
-        <details><summary><span>04</span><b>Sprawdź wynik</b><i>+</i></summary><p><code>predict</code> zwraca klasę 0/1. Zawsze sprawdź kilka przykładów po treningu.</p><pre><code>for x, cel in dane:
-    print(cel, network.predict(x))</code></pre></details>
+)</code></pre></div>
+        <div class="guide-card"><div class="guide-card-title"><span>04</span><b>Sprawdź wynik</b><i>✓</i></div><p><code>predict</code> zwraca klasę 0/1. Zawsze sprawdź kilka przykładów po treningu.</p><pre><code>for x, cel in dane:
+    print(cel, network.predict(x))</code></pre></div>
       </div>
     </section>
 
@@ -104,8 +95,8 @@ network = Network([
 
     <section id="activations" class="section-shell section-block tinted">
       <div class="section-heading inline-heading"><div><p class="eyebrow">05 — aktywacje</p><h2>Porównaj funkcje<br><em>przed wyborem.</em></h2></div><p class="hint">Kliknij funkcję</p></div>
-      <div class="activation-layout"><div class="activation-tabs" role="tablist" aria-label="Funkcje aktywacji"><button role="tab" aria-selected="true" class="active" data-activation="sigmoid">sigmoid</button><button role="tab" aria-selected="false" data-activation="relu">relu</button><button role="tab" aria-selected="false" data-activation="tanh">tanh</button><button role="tab" aria-selected="false" data-activation="linear">linear</button><button role="tab" aria-selected="false" data-activation="leaky_relu">leaky_relu</button><button role="tab" aria-selected="false" data-activation="step">step</button></div><div class="activation-demo"><div class="demo-copy"><span id="activation-name">sigmoid</span><p id="activation-description">Wygładza wynik do zakresu od 0 do 1. Dobry wybór dla klasyfikacji.</p><div class="activation-specs"><span>zakres <b id="activation-range">0 → 1</b></span><span>zastosowanie <b id="activation-use">klasyfikacja</b></span></div><div class="mini-values"><span>wejście <b id="demo-input">0.0</b></span><span>wynik <b id="demo-output">0.5</b></span></div></div><div class="graph"><div class="axis-y"></div><div class="axis-x"></div><svg viewBox="0 0 300 160" preserveAspectRatio="none" aria-hidden="true"><path id="activation-path" d="M0 128 C42 128 84 126 120 113 C160 96 184 64 210 49 C242 32 270 31 300 31"></path></svg></div></div></div>
-+      <div class="activation-table-wrap"><table class="activation-table"><caption>Porównanie funkcji aktywacji</caption><thead><tr><th>Funkcja</th><th>Zakres</th><th>Najlepsza do</th><th>Ważna cecha</th></tr></thead><tbody><tr><td><code>sigmoid</code></td><td>0 → 1</td><td>klasyfikacji binarnej</td><td>gładka</td></tr><tr><td><code>relu</code></td><td>0 → ∞</td><td>warstw ukrytych</td><td>prosta i szybka</td></tr><tr><td><code>tanh</code></td><td>-1 → 1</td><td>danych wokół zera</td><td>centruje wynik</td></tr><tr><td><code>linear</code></td><td>-∞ → ∞</td><td>regresji</td><td>nie zmienia wartości</td></tr><tr><td><code>leaky_relu</code></td><td>-∞ → ∞</td><td>warstw ukrytych</td><td>zachowuje gradient</td></tr><tr><td><code>step</code></td><td>0 lub 1</td><td>prostego progu</td><td>twarda granica</td></tr></tbody></table></div>
+      <div class="activation-layout"><div class="activation-tabs" role="tablist" aria-label="Funkcje aktywacji"><button role="tab" aria-selected="true" class="active" data-activation="sigmoid">sigmoid</button><button role="tab" aria-selected="false" data-activation="relu">relu</button><button role="tab" aria-selected="false" data-activation="tanh">tanh</button><button role="tab" aria-selected="false" data-activation="linear">linear</button><button role="tab" aria-selected="false" data-activation="leaky_relu">leaky_relu</button><button role="tab" aria-selected="false" data-activation="step">step</button></div><div class="activation-demo"><div class="demo-copy"><span id="activation-name">sigmoid</span><p id="activation-description">Wygładza wynik do zakresu od 0 do 1. Dobry wybór dla klasyfikacji.</p><div class="activation-specs"><span>zakres <b id="activation-range">0 → 1</b></span><span>zastosowanie <b id="activation-use">klasyfikacja</b></span></div><label class="demo-slider-label" for="demo-slider">Przesuń wejście</label><input id="demo-slider" class="demo-slider" type="range" min="-5" max="5" step="0.1" value="0" aria-label="Wartość wejściowa funkcji aktywacji"><div class="mini-values"><span>wejście <b id="demo-input" aria-live="polite">0.0</b></span><span>wynik <b id="demo-output" aria-live="polite">0.5</b></span></div></div><div class="graph"><div class="axis-y"></div><div class="axis-x"></div><svg viewBox="0 0 300 160" preserveAspectRatio="none" aria-hidden="true"><path id="activation-path" d="M0 128 C42 128 84 126 120 113 C160 96 184 64 210 49 C242 32 270 31 300 31"></path></svg></div></div></div>
+      <div class="activation-table-wrap"><table class="activation-table"><caption>Porównanie funkcji aktywacji</caption><thead><tr><th>Funkcja</th><th>Zakres</th><th>Najlepsza do</th><th>Ważna cecha</th></tr></thead><tbody><tr><td><code>sigmoid</code></td><td>0 → 1</td><td>klasyfikacji binarnej</td><td>gładka</td></tr><tr><td><code>relu</code></td><td>0 → ∞</td><td>warstw ukrytych</td><td>prosta i szybka</td></tr><tr><td><code>tanh</code></td><td>-1 → 1</td><td>danych wokół zera</td><td>centruje wynik</td></tr><tr><td><code>linear</code></td><td>-∞ → ∞</td><td>regresji</td><td>nie zmienia wartości</td></tr><tr><td><code>leaky_relu</code></td><td>-∞ → ∞</td><td>warstw ukrytych</td><td>zachowuje gradient</td></tr><tr><td><code>step</code></td><td>0 lub 1</td><td>prostego progu</td><td>twarda granica</td></tr></tbody></table></div>
      </section>
 
     <section class="section-shell section-block final-cta"><p class="eyebrow">06 — dalej</p><h2>Ucz się.<br><em>Eksperymentuj.</em></h2><p>Zbuduj coś własnego z tota i zobacz, jak teoria zamienia się w działający kod.</p><div class="hero-actions"><a class="button button-primary" href="#quickstart">Przejdź do quickstartu <span>→</span></a><a class="button button-ghost" href="https://github.com/totatomasz13-web/tota" target="_blank" rel="noreferrer">Dokumentacja na GitHubie ↗</a></div></section>
