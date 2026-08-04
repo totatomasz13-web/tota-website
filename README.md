@@ -26,7 +26,7 @@ Otwórz <http://localhost:8000>.
 
 1. Wejdź na [dash.cloudflare.com](https://dash.cloudflare.com/) i wybierz konto.
 2. Otwórz **Workers & Pages → Create application → Pages → Connect to Git**.
-3. Połącz konto GitHub i wybierz repozytorium `tota-website`.
+3. Połącz konto GitHub i wybierz repozytorium `TotaAI`.
 4. Ustaw:
    - **Production branch:** `main`
    - **Framework preset:** `None`
