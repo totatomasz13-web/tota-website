@@ -28,11 +28,12 @@
   <main id="top">
     <section class="hero section-shell">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="pulse"></span> Biblioteka Python · v1.0.0</p>
+        <p class="eyebrow"><span class="pulse"></span> Biblioteka Python · v1.0.1</p>
         <h1>Sieci neuronowe<br><em>bez czarnej skrzynki.</em></h1>
         <p class="hero-lead">tota to mała, edukacyjna biblioteka, która pokazuje cały przepływ danych — od wejścia neuronu do wyniku sieci.</p>
         <div class="hero-actions"><a class="button button-primary" href="#quickstart">Zacznij w 60 sekund <span>→</span></a><a class="button button-ghost" href="#api">Przejdź do API ↓</a></div>
-        <div class="hero-meta" aria-label="Najważniejsze informacje"><span><b>1.0.0</b> aktualne wydanie</span><span><b>PyTorch</b> obliczenia</span><span><b>MIT</b> open source</span></div>
+        <div class="hero-meta" aria-label="Najważniejsze informacje"><span><b>1.0.1</b> aktualne wydanie</span><span><b>PyTorch</b> obliczenia</span><span><b>MIT</b> open source</span></div>
+        <div class="release-note"><strong>Nowe wydanie · 1.0.1</strong><span>Dokumentacja odświeżona dla najnowszej wersji biblioteki. Transformer pozostaje funkcją <b>BETA</b>.</span></div>
       </div>
       <div class="hero-art" aria-label="Schemat sieci neuronowej" role="img"><svg class="hero-network-svg" viewBox="0 0 520 390" aria-hidden="true"><g class="network-lines"><path d="M92 110 L238 76 M92 110 L238 195 M92 110 L238 314 M92 195 L238 76 M92 195 L238 195 M92 195 L238 314 M92 280 L238 76 M92 280 L238 195 M92 280 L238 314 M282 76 L428 140 M282 76 L428 250 M282 195 L428 140 M282 195 L428 250 M282 314 L428 140 M282 314 L428 250"/></g><g class="network-nodes input-nodes"><circle cx="92" cy="110" r="13"/><circle cx="92" cy="195" r="13"/><circle cx="92" cy="280" r="13"/></g><g class="network-nodes hidden-nodes"><circle cx="260" cy="76" r="15"/><circle cx="260" cy="195" r="15"/><circle cx="260" cy="314" r="15"/></g><g class="network-nodes output-nodes"><circle cx="428" cy="140" r="16"/><circle cx="428" cy="250" r="16"/></g></svg><span class="art-label label-input">wejście</span><span class="art-label label-output">wynik</span></div>
     </section>
@@ -93,7 +94,7 @@ network = Network([Layer(<span class="num">5</span>, <span class="num">1</span>)
 
     <section id="transformer" class="section-shell section-block transformer-section">
       <div class="section-heading inline-heading"><div><a class="eyebrow category-link" href="#transformer">05 — transformer <span class="beta-pill">BETA</span> ↗</a><h2>Tekstowe modele<br><em>od tokena do tekstu.</em></h2></div><span class="beta-note">Eksperymentalne API</span></div>
-      <p class="section-intro transformer-intro">Wydanie 1.0.0 dodaje mały, edukacyjny Transformer językowy. Funkcje poniżej są dostępne, ale ich API może się zmienić przed stabilnym wydaniem.</p>
+      <p class="section-intro transformer-intro">Wydanie 1.0.1 aktualizuje dokumentację biblioteki. Funkcje Transformera opisane poniżej pozostają eksperymentalne i nadal mają status <strong>BETA</strong>; ich API może się zmienić przed stabilnym wydaniem.</p>
       <div class="transformer-grid">
         <article class="api-card beta-card"><span class="api-number">01</span><h3>Tokenizer <span class="beta-pill">BETA</span></h3><p>Tokenizer znakowy z tokenami <code>&lt;PAD&gt;</code>, <code>&lt;UNK&gt;</code>, <code>&lt;BOS&gt;</code> i <code>&lt;EOS&gt;</code>.</p><code>Tokenizer(text).encode("Ala ma")</code></article>
         <article class="api-card beta-card"><span class="api-number">02</span><h3>Warstwy tensorowe <span class="beta-pill">BETA</span></h3><p>Embeddingi, pozycje, Linear, LayerNorm, FeedForward oraz causal self-attention.</p><code>Embedding · PositionalEncoding · LayerNorm</code></article>
@@ -118,7 +119,7 @@ model.train_text(tekst, epochs=<span class="num">5</span>)
 
     <section class="section-shell section-block final-cta"><p class="eyebrow">07 — dalej</p><h2>Czytaj kod.<br><em>Buduj własne modele.</em></h2><p>Najlepszy sposób nauki to mały eksperyment: zmień dane, warstwy albo aktywację i obserwuj wynik.</p><div class="hero-actions"><a class="button button-primary" href="#quickstart">Wróć do startu <span>→</span></a><a class="button button-ghost" href="https://github.com/totatomasz13-web/tota" target="_blank" rel="noreferrer">Repozytorium biblioteki ↗</a></div></section>
   </main>
-  <footer class="site-footer section-shell"><span>tota <small>v1.0.0</small></span><span>Dokumentacja edukacyjna · 2026</span><a href="#top">Na górę ↑</a></footer>
+  <footer class="site-footer section-shell"><span>tota <small>v1.0.1</small></span><span>Dokumentacja edukacyjna · 2026</span><a href="#top">Na górę ↑</a></footer>
   <script src="script.js?v=20260805-3"></script>
 </body>
 </html>
