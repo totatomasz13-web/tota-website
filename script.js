@@ -14,3 +14,11 @@ menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded'
 nav?.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{menu?.setAttribute('aria-expanded','false');nav.classList.remove('is-open')}));
 const progress=document.querySelector('.scroll-progress span');
 window.addEventListener('scroll',()=>{const max=document.documentElement.scrollHeight-window.innerHeight;progress.style.width=`${max>0?(window.scrollY/max)*100:0}%`},{passive:true});
+const themeToggle=document.querySelector('.theme-toggle');
+const savedTheme=localStorage.getItem('tota-theme');
+if(savedTheme==='dark'){document.body.classList.add('dark');themeToggle?.setAttribute('aria-pressed','true');if(themeToggle)themeToggle.textContent='☀'}
+themeToggle?.addEventListener('click',()=>{const dark=document.body.classList.toggle('dark');localStorage.setItem('tota-theme',dark?'dark':'light');themeToggle.setAttribute('aria-pressed',String(dark));themeToggle.setAttribute('aria-label',dark?'Włącz tryb jasny':'Włącz tryb ciemny');themeToggle.textContent=dark?'☀':'☾'});
+document.addEventListener('keydown',event=>{if(event.key==='/'&&document.activeElement?.tagName!=='INPUT'){event.preventDefault();document.querySelector('#docs-search')?.focus()}});
+const search=document.querySelector('#docs-search');
+const searchable=[...document.querySelectorAll('main section')];
+search?.addEventListener('input',()=>{const term=search.value.trim().toLowerCase();searchable.forEach(section=>{const found=!term||section.innerText.toLowerCase().includes(term);section.classList.toggle('search-empty',!found);section.classList.toggle('search-match',Boolean(term&&found))});});
